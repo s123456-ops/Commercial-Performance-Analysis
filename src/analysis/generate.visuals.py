@@ -92,7 +92,39 @@ def run_analysis():
     plt.savefig(os.path.join(viz_folder, "correlation_heatmap.png"), bbox_inches='tight')
     plt.close()
 
-    print(f"DONE! in: {viz_folder}")
+    # Vis 7: Revenue Distribution (Top Clients vs Others) 
+    print("Generating Chart 7 (Revenue Distribution)...")
+    q7 = """
+        SELECT c.customerName, SUM(od.quantityOrdered * od.priceEach) AS total_spent
+        FROM customers c
+        JOIN orders o ON c.customerNumber = o.customerNumber
+        JOIN orderdetails od ON o.orderNumber = od.orderNumber
+        GROUP BY c.customerName
+        ORDER BY total_spent DESC;
+    """
+    df7 = get_db_data(q7)
+    top_10 = df7.head(10).copy()
+    others_value = df7.iloc[10:]['total_spent'].sum()
+    others_df = pd.DataFrame([{'customerName': 'Others', 'total_spent': others_value}])
+    plot_data = pd.concat([top_10, others_df], ignore_index=True)
+
+    plt.figure(figsize=(10, 8))
+    plt.pie(plot_data['total_spent'], labels=plot_data['customerName'], autopct='%1.1f%%', startangle=140)
+    plt.title('Revenue Distribution: Top 10 Clients vs Others')
+    plt.savefig(os.path.join(viz_folder, "revenue_distribution.png"), bbox_inches='tight')
+    plt.close()
+
+    # Vis 8: Order Status Distribution
+    print("Generating Chart 8 (Order Status)...")
+    q8 = "SELECT status, COUNT(*) AS count FROM orders GROUP BY status;"
+    df8 = get_db_data(q8)
+    plt.figure(figsize=(8, 8))
+    plt.pie(df8['count'], labels=df8['status'], autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
+    plt.title('Order Status Distribution')
+    plt.savefig(os.path.join(viz_folder, "order_status_distribution.png"), bbox_inches='tight')
+    plt.close()
+
+    print(f"DONE! All 8 visuals saved in: {viz_folder}")
 
 if __name__ == "__main__":
     run_analysis()

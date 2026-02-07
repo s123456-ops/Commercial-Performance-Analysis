@@ -1,8 +1,8 @@
 DELIMITER //
 
+-- 1. Procédure : Calcul de la commission des employés (Requis Partie 2)
 CREATE PROCEDURE CalculateEmployeeCommissions()
 BEGIN
-    -- Calcule 5% de commission sur les ventes totales pour chaque employé
     SELECT 
         e.employeeNumber,
         e.firstName,
@@ -17,4 +17,15 @@ BEGIN
     ORDER BY commission_earned DESC;
 END //
 
-DELIMITER ;
+-- 2. Procédure : Gestion des stocks 
+CREATE PROCEDURE ManageStockAlerts(IN stock_threshold INT)
+BEGIN
+    SELECT 
+        productCode, 
+        productName, 
+        quantityInStock,
+        productLine
+    FROM products
+    WHERE quantityInStock < stock_threshold
+    ORDER BY quantityInStock ASC;
+END //
