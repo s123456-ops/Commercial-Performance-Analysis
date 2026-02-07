@@ -11,7 +11,7 @@ def run_analysis():
     viz_folder = os.path.join(project_root, "visualisations")
     os.makedirs(viz_folder, exist_ok=True)
 
-    # --- CHART 1: Country Distribution (Bar Chart) ---
+    # Vis 1: Country Distribution
     print("Generating Chart 1 (Geography)...")
     q1 = "SELECT country, COUNT(*) AS nb FROM customers GROUP BY country ORDER BY nb DESC;"
     df1 = get_db_data(q1)
@@ -21,7 +21,7 @@ def run_analysis():
     plt.savefig(os.path.join(viz_folder, "sales_by_country.png"), bbox_inches='tight')
     plt.close()
 
-    # --- CHART 2: Top 10 Products (Bar Chart) ---
+    # Vis 2: Top 10 Products 
     print("Generating Chart 2 (Top Products)...")
     q2 = """
         SELECT p.productName, SUM(od.quantityOrdered) AS qty 
@@ -37,7 +37,7 @@ def run_analysis():
     plt.savefig(os.path.join(viz_folder, "top_10_products.png"), bbox_inches='tight')
     plt.close()
 
-    # --- CHART 3: Revenue by Line (Bar Chart) ---
+    # Vis 3: Revenue by Line 
     print("Generating Chart 3 (Product Lines)...")
     q3 = """
         SELECT p.productLine, SUM(od.quantityOrdered * od.priceEach) AS rev 
@@ -52,7 +52,7 @@ def run_analysis():
     plt.savefig(os.path.join(viz_folder, "revenue_by_product_line.png"), bbox_inches='tight')
     plt.close()
 
-    # --- CHART 4: Low Stock (Inventory Analysis) ---
+    # Vis 4: Low Stock (Inventory Analysis)
     print("Generating Chart 4 (Low Stock)...")
     q4 = "SELECT productName, quantityInStock FROM products WHERE quantityInStock < 1000 ORDER BY quantityInStock ASC;"
     df4 = get_db_data(q4)
@@ -82,7 +82,7 @@ def run_analysis():
     plt.savefig(os.path.join(viz_folder, "sales_evolution.png"))
     plt.close()
 
-    # Vis 6: Correlation (Heatmap)
+    # Vis 6: Correlation 
     print("Generating Chart 6 (Correlation Heatmap)...")
     q6 = "SELECT quantityOrdered, priceEach, (quantityOrdered * priceEach) AS total_val FROM orderdetails;"
     df6 = get_db_data(q6)
