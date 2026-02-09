@@ -3,12 +3,13 @@ CREATE DATABASE classicmodels;
 USE classicmodels;
 SHOW TABLES;
 
-SELECT COUNT(*) AS nb_customers FROM customers;
-SELECT COUNT(*) AS nb_employees FROM employees;
-SELECT COUNT(*) AS nb_offices FROM offices;
-SELECT COUNT(*) AS nb_orders FROM orders;
-SELECT COUNT(*) AS nb_products FROM products;
-SELECT COUNT(*) AS nb_productlines FROM productlines;
+SELECT 
+    (SELECT COUNT(*) FROM customers) AS nb_customers,
+    (SELECT COUNT(*) FROM employees) AS nb_employees,
+    (SELECT COUNT(*) FROM offices) AS nb_offices,
+    (SELECT COUNT(*) FROM orders) AS nb_orders,
+    (SELECT COUNT(*) FROM products) AS nb_products,
+    (SELECT COUNT(*) FROM productlines) AS nb_productlines;
 
 /*num of custumors by country*/
 SELECT country, COUNT(*) AS nb_customers
