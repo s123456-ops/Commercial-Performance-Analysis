@@ -122,8 +122,14 @@ Ces scripts se connectent à MySQL, exécutent les requêtes SQL et génèrent d
 Les graphiques générés sont sauvegardés dans :
 
 visualizations/
+Ces graphiques sont utilisés pour présenter les résultats.
 
-Ces graphiques sont utilisés
-pour présenter les résultats.
+## Rapports d'analyse
+
+Le dossier `reports/` contient deux versions du rapport :
+
+- `rapport_classicmodels.md` : rapport général synthétique au format Markdown.
+- `Rapport SQL-Python-ALAOUI MRANI.Salma.pdf` : rapport détaillé au format PDF avec l’ensemble des analyses et visualisations.
+
 
 Auteur : ALAOUI MRANI Salma — Étudiante en M1 BIDABI
