@@ -14,7 +14,6 @@ def get_db_data(query):
     conn.close()
     return df
 
-# Ce bloc s'exécute uniquement quand tu lances ce fichier directement
 if __name__ == "__main__":
     # Test the connection
     data = get_db_data("SELECT 1")
@@ -22,3 +21,4 @@ if __name__ == "__main__":
         print("Successfully connected to the classicmodels database!")
     else:
         print("Connection failed.")
+        
