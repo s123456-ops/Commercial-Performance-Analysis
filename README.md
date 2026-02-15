@@ -51,22 +51,24 @@ SHOW TABLES;
 
 1. Cloner le dépôt avec les commandes suivantes :
 
+```bash
 git clone https://github.com/YOUR_USERNAME/classicmodels-analysis.git
 
 cd classicmodels-analysis
-
+```
 ---
 
 ## Étape 4 — Installation des dépendances Python
 
 Installer les dépendances Python avec :
-
+```bash
 pip install -r requirements.txt
-
+```
 Ou manuellement :
 
+```bash
 pip install pandas matplotlib mysql-connector-python
-
+```
 ---
 
 ## Étape 5 — Structure du projet
@@ -108,11 +110,11 @@ Les scripts Python d’analyse sont stockés dans :
 src/analysis/
 
 Pour exécuter un script :
-
+```bash
 python src/analysis/nom_du_script.py
 
 Ces scripts se connectent à MySQL, exécutent les requêtes SQL et génèrent des visualisations.
-
+```
 ---
 
 ## Étape 8 — Visualisations
@@ -121,4 +123,7 @@ Les graphiques générés sont sauvegardés dans :
 
 visualizations/
 
-Ces graphiques sont utilisés dans le rapport final pour présenter les résultats.
+Ces graphiques sont utilisés
+pour présenter les résultats.
+
+Auteur : ALAOUI MRANI Salma — Étudiante en M1 BIDABI
