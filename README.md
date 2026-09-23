@@ -132,4 +132,4 @@ Le dossier `reports/` contient deux versions du rapport :
 - `Rapport SQL-Python-ALAOUI MRANI.Salma.pdf` : rapport détaillé au format PDF avec l’ensemble des analyses et visualisations.
 
 
-Auteur : ALAOUI MRANI Salma — Étudiante en M1 BIDABI
+Auteur : ALAOUI MRANI Salma — Étudiante en Master Analyse, Big Data, Business Intelligence
